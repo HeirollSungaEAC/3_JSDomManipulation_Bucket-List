@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket List Banner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000000, #4d4d4d); /* Black gradient background */
+            color: #ffffff; /* White text for contrast */
+        }
+        
+        .banner {
+            background: linear-gradient(to right, #990000, #cc0000); /* Elegant red gradient banner */
+            color: white;
+            border: none;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+        
+        li {
+            padding: 3px 0;
+        }
+        
+        .input-group {
+            margin: 10px;
+        }
+        
+        input {
+            padding: 5px;
+            border: 1px solid #990000;
+            border-radius: 4px;
+            margin-left: 8px;
+            background-color: #1a1a1a; /* Dark background for input */
+            color: white;
+        }
+        
+        .button-container {
+            display: flex;
+            margin: 10px;
+        }
+        
+        .button {
+            padding: 10px;
+            margin-right: 5px;
+            background: linear-gradient(to bottom, #cc0000, #990000); /* Elegant red gradient buttons */
+            color: white;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            flex: 1;
+            max-width: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .button:hover {
+            background: linear-gradient(to bottom, #990000, #660000); /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>Heiroll's Bucket List</h1>
+        <ul id="bucketList">
+            <li>Travel to Japan</li>
+            <li>Learn to play the E-guitar</li>
+            <li>Make music</li>
+            <li>Hit the gym</li>
+        </ul>
+    </div>
+    
+    <div class="input-group">
+        <label for="newItem">Add New:</label>
+        <input type="text" id="newItem" placeholder="Enter a new bucket list item">
+    </div>
+    
+    <div class="button-container">
+        <div class="button" onclick="addItem()">
+            Add new item
+        </div>
+        <div class="button" onclick="changeFontFamily()">
+            Change font family
+        </div>
+        <div class="button" onclick="toggleBold()">
+            Toggle to BoldText
+        </div>
+    </div>
+
+    <script>
+        // Function to add a new item to the bucket list
+        function addItem() {
+            const newItemInput = document.getElementById('newItem');
+            const bucketList = document.getElementById('bucketList');
+            
+            if (newItemInput.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = newItemInput.value;
+                bucketList.appendChild(li);
+                newItemInput.value = '';
+            }
+        }
+
+        // Function to change the font family of the bucket list
+        function changeFontFamily() {
+            const bucketList = document.getElementById('bucketList');
+            const fonts = ['Arial, sans-serif', 'Courier New', 'Georgia', 'Tahoma', 'Verdana'];
+            const currentFont = bucketList.style.fontFamily;
+            const currentIndex = fonts.indexOf(currentFont);
+            const nextIndex = (currentIndex + 1) % fonts.length;
+            bucketList.style.fontFamily = fonts[nextIndex];
+        }
+
+        // Function to toggle bold font weight for the bucket list
+        function toggleBold() {
+            const bucketList = document.getElementById('bucketList');
+            bucketList.style.fontWeight = bucketList.style.fontWeight === 'bold' ? 'normal' : 'bold';
+        }
+    </script>
+</body>
+</html>
